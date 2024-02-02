@@ -1,0 +1,10 @@
+<div class="ssbodyContainer">
+  <div  class="ssTopNav d-flex justify-content-end">
+    <button class="btn ssTopNavBtn" [class.isactive]="isHomeActive" (click)="showHome()">Search</button>
+    <button class="btn ssTopNavBtn" [class.isactive]="!isHomeActive" (click)="showFavorites()">Favorites</button>
+  </div>
+  
+  <router-outlet></router-outlet>
+  <!-- <div class="mb-3"></div> -->
+</div>
+

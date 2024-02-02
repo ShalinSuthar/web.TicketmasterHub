@@ -1,0 +1,32 @@
+<div class="container-fluid mt-5 mb-4">
+  <div *ngIf="events?.length; else noRecordsFound" class="row ssResultTableParent">
+    <table class="table table-striped table-dark col-md-8 col-11 m-auto ssResultTable text-center">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <!-- <th scope="col">Time</th> -->
+          <th scope="col">Icon</th>
+          <th scope="col">Event</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Venue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events" (click)="openEventDetails(event)" style="cursor: pointer;">
+          <td>{{ getEventDate(event) }} <br> {{ getEventTime(event) }}</td>
+          <!-- <td></td> -->
+          <td><img height="55" width="70" [src]="getEventIcon(event)" alt="Event Icon" class="ssResultImage"></td>
+          <td > {{ getEventName(event) }}</td>
+          <td>{{ getEventGenre(event) }}</td>
+          <td>{{ getEventVenue(event) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noRecordsFound>
+    <div class="col-md-6 col-9 m-auto ssNoFav">No results available.</div>
+  </ng-template>
+</div>
+
+  

@@ -1,0 +1,85 @@
+<div class="container-fluid ssHomeForm">
+  <div class="row">
+
+
+
+    <div class="ssHomeMainFormParent col-11 col-md-6 m-auto px-5">
+      <div class="ssHomeFormHeading text-center mt-5">Event Search</div>
+      <hr m-4 class="ssFormHrLine">
+      <form [formGroup]="ssForm" class="d-flex flex-column ssFromFull" ngNativeValidate>
+        <div class="ssKeywordInput d-flex flex-column">
+          <label>Keyword<span class="ssRequiredMark">*</span></label>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Keyword</mat-label> -->
+            <input type="text" matInput formControlName="keywordControl" [matAutocomplete]="auto" >
+            <!-- <mat-error *ngIf="ssForm?.get('keywordControl')?.invalid && ssForm?.get('keywordControl')?.touched">Please fill out this field.</mat-error> -->
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngIf="isLoading" class="is-loading">
+                <mat-spinner diameter="20"></mat-spinner>
+              </mat-option>
+              <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <div class="ssHomeCategoryDistanceParent row">
+          <div class="ssFormDistance d-flex flex-column col-md-6 col-12">
+            <label>Distance</label>
+            <mat-form-field appearance="outline">
+              <input type="number" placeholder="Distance" placeholder="10" value="10" min="0" matInput
+                formControlName="distance">
+            </mat-form-field>
+          </div>
+
+          <div class="ssFormCategory d-flex flex-column col-md-6 col-12">
+            <label>Category<span class="ssRequiredMark">*</span></label>
+            <mat-form-field appearance="outline" class="w-75">
+              <!-- <mat-label>Category</mat-label> -->
+              <mat-select placeholder="Default" formControlName="category" class="">
+                <mat-option value="Default" selected>Default</mat-option>
+                <mat-option value="Music">Music</mat-option>
+                <mat-option value="Sports">Sports</mat-option>
+                <mat-option value="ArtsTheatre">Arts & Theatre</mat-option>
+                <mat-option value="Film">Film</mat-option>
+                <mat-option value="Miscellaneous">Miscellaneous</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+
+
+        <div class="ssFormLocation d-flex flex-column">
+          <label>Location<span class="ssRequiredMark">*</span></label>
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="location" [disabled]="isLocationDisabled" [required]="isLocationRequired" [style.color]="isLocationDisabled ? 'transparent' : ''">
+            <!-- <mat-error *ngIf="ssForm?.get('location')?.invalid && ssForm?.get('location')?.touched">Please fill out this field.</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="ssFormAutoLocation">
+          <mat-checkbox formControlName="autoLocation" (change)="onLocationCheckChange($event)" class="ssMatCheck">Auto-detect your location
+          </mat-checkbox>
+        </div>
+
+
+        <div class="ssHomeButtonParent mt-3 mb-5">
+          <button mat-raised-button color="primary" type="submit" class="btn btn-danger px-4 py-2 ssFormBtn"
+            (click)="onSubmit()">SUBMIT</button>
+          <button mat-raised-button color="accent" type="button" class="btn btn-primary px-4 py-2 ssFormBtn"
+            (click)="onClear()">CLEAR</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+ 
+</div>
+<!-- {{result}} -->
+<app-results [events]="events" *ngIf="showEvents && !showEventDetails" (eventClicked)="handleEventClicked($event)">
+</app-results>
+
+
+<app-detailstab *ngIf="showEventDetails" (goBackEvent)="showEventDetails = false" [event]="selectedEvent"></app-detailstab>

@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+/* @import '~@fortawesome/fontawesome-free/css/all.css'; */
+/* @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; */
+/* .cdk-global-overlay-wrapper, .cdk-overlay-container { z-index: 9999!important; } 
+.cdk-overlay-connected-position-bounding-box {
+    z-index: 99999 !important;
+  }
+
+  ::ng-deep .cdk-overlay-container {
+    z-index: 9999;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-label { margin-top:-15px; }
+::ng-deep label.ng-star-inserted { transform: translateY(-0.59375em) scale(.75) !important; } */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: black; color: white}
+
+body {
+  /* background-color: black; */
+}
+
+.ssbodyBig {
+  background-image: url(./assets/images/background.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

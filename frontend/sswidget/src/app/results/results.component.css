@@ -1,0 +1,29 @@
+.ssNoFav{
+    background-color: white;
+    color: red;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.ssResultTable{
+    border-radius: 4px;
+}
+
+
+
+@media screen and (max-width: 450px) {
+    .ssResultImage{
+        height: 4em!important;
+        width: 4em!important;
+    }
+
+    .ssResultTable{
+        
+    }
+
+    .ssResultTableParent{
+        margin: 0 0.2em;
+        overflow-x: scroll;
+    }
+}

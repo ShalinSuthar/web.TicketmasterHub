@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<div class="container-fluid mt-3">
+  <div class="text-center mb-4 h4" style="color: cyan;">List of your favorite events</div>
+<div *ngIf="!noEvents" class="row ssFavTableParent">
+  <table class="table text-center ssFavTable col-md-8 col-11">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Event Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Favorite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{ event?.dates?.start?.localDate }}</td>
+        <td>{{ event?.name }}</td>
+        <td>{{ event?.category }}</td>
+        <td>{{ event._embedded.venues?.[0]?.name || 'N/A'}}</td>
+        
+        <td><i class="bi bi-trash ssFavDeleteIcon" (click)="removeEvent(event)"></i></td>
+        <!-- <td><i class="fa fa-regular fa-trash-can ssFavDeleteIcon" style="color: #393939;"  (click)="removeEvent(event)"></i></td> -->
+        <!-- <td><i class="material-icons ssFavDeleteIcon" (click)="removeEvent(event)">delete</i></td> -->
+        <!-- <td><button (click)="removeEvent(event)"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon> -->
+        <!-- </button></td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="noEvents">
+  <div class="col-md-6 col-9 m-auto ssNoFav"> No Events to Show</div>
+</div>
+</div>

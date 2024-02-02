@@ -1,0 +1,222 @@
+.show-more {
+    height: auto!important;
+}
+
+.mat-tab-labels, .mat-tab-label, .mat-tab-link {
+    color: white;
+    font-size: 16px;
+    background-color: #804A71;
+  }
+  
+  .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background: white;
+    height: 5px; 
+  }
+
+  mat-icon.filled {
+    color: red;
+  }
+  
+  mat-icon.outline {
+    color: grey;
+  }
+
+  .favorite-icon-wrapper {
+    padding: 2px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 0.1px;
+    border-color: grey;
+    background-color: white;
+    display: flex;
+  }
+
+  .ssDetailsParent{
+    background-color: rgba(208, 208, 208, 0.15);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 25px;
+    margin-top: 30px;
+    color: white;
+    font-family: 'Calibri', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  ::ng-deep .mat-mdc-tab-labels{
+    background: #008060;
+  }
+
+  ::ng-deep .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
+    color: white
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label, .mat-mdc-tab-link .mdc-tab__text-label{
+    color: white;
+}
+
+.ssEventLabels{
+    color: #00ffbf;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.ssTicketStatusBtn {
+    width: 65px;
+    text-align: center;
+    border-radius: 8px;
+    height: 20px;
+    /* padding-top: 3px; */
+}
+
+.my-google-map{
+    width: 200px;
+    height: 400px;
+}
+
+.ssBtmIcon{
+  font-size: 1.5rem;
+}
+
+.ssBtmIconParent{
+  gap: 10px;
+}
+
+.ssNoFav{
+  background-color: white;
+  color: red;
+  border-radius: 5px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.ssLessMoreLink{
+  color: #1260cd;
+}
+
+.ssShowDiv{
+  line-height: 1em;
+  height: 2em;
+  overflow: hidden;
+}
+
+.ssNoFavParent{
+  min-height: 20vw;
+}
+
+.ssEventLeftDetails{
+  text-align: center;
+  gap: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  /* font-size: 12px; */
+}
+
+.ssTicketStatusBtn{
+  margin: auto;
+}
+
+.ssVenueLeft{
+  text-align: center;
+  /* font-size: 12px!important; */
+}
+.ssVenueRight{
+  text-align: center;
+  /* font-size: 12px!important; */
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+
+.ssVenueParent{
+  /* min-height: 30vw; */
+}
+
+@media screen and (max-width: 450px){
+  .ssEventLeftDetails{
+    text-align: center;
+    gap: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+
+  .ssTicketStatusBtn{
+    margin: auto;
+  }
+
+  ::ng-deep .mat-tab-labels, .mat-tab-label, .mat-tab-link {
+    font-size: 10px;
+  }
+
+  ::ng-deep .mat-mdc-tab .mdc-tab__text-label{
+    font-size: 10px;
+  }
+
+  .ssEventNameTop{
+    font-size: 1.2rem!important;
+    margin-bottom: 0;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .favorite-icon-wrapper{
+    padding: 1px;
+  }
+
+  ::ng-deep .mat-icon{
+    width: 18px!important;
+    height: 18px!important;
+  }
+
+  ::ng-deep .material-icons{
+    font-size: 18px;
+  }
+
+  .ssAlbumLabel{
+    text-align: center;
+    margin-bottom: 1.2em;
+  }
+
+  ::ng-deep .mdc-tab{
+    min-width: 75px!important;
+  }
+
+  .ssAlbumImage{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+  }
+
+  .ssEventHeading{
+    margin-bottom: 1rem !important;
+  }
+
+  .ssEventLabels{
+    font-size: 0.9!important;
+  }
+
+  .ssVenueLeft{
+    text-align: center;
+    font-size: 12px!important;
+  }
+
+  .ssVenueRight{
+    text-align: center;
+    font-size: 12px!important;
+  }
+
+  .ssMapBtn{
+    font-size: 12px!important;
+  }
+
+  .ssArtistImageMain{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ssNoFavParent{
+    min-height: 50vw;
+  }
+}

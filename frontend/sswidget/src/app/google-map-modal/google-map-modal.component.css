@@ -1,0 +1,21 @@
+/* .ssGoogleMap .map-container {
+      width: 300px!important;
+      height: 400px!important;
+    } */
+
+    ::ng-deep .map-container{
+      height: 56vh !important;
+      width: 400px !important;
+  }
+  /* ::ng-deep .mat-mdc-dialog-container .mdc-dialog__title{
+    line-height: 2em!important;
+  } */
+@media screen and (max-width: 768px){
+  
+
+  ::ng-deep .map-container {
+    width: 61vw !important;
+    height: 35vh !important;
+}
+}
+    

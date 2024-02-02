@@ -1,0 +1,35 @@
+.ssFavTable{
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    margin: auto;
+    min-width: 450px;
+}
+
+.ssFavDeleteIcon{
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.ssNoFav{
+    background-color: white;
+    color: red;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+}
+
+@media screen and (max-width: 450px){
+    .ssFavTable{
+        font-size: 9px!important;
+    }
+
+    .ssFavTableParent{
+        overflow-x: scroll;
+        margin: 0 0.1em;
+    }
+
+    .ssFavDeleteIcon{
+        font-size: 1.4em;
+    }
+}

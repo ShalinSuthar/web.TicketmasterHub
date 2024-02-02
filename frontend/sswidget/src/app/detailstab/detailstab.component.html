@@ -1,0 +1,302 @@
+<div class="container mb-3">
+  <div class="row mx-0">
+    <div class="col-lg-9 col-12 m-auto">
+      <div class=" mt-5 ssDetailsParent">
+      <div (click)="goBack()" style="cursor: pointer;" class="ml-3 pt-3 mb-4">
+        <div class="" style=""><span><i class="fa fa-solid fa-angle-left mr-1" style="color: #ffffff;"></i></span> <u>Back</u></div>
+      </div>
+      <div class="ssEventHeading d-flex justify-content-center row mx-0">
+        <div class="h4 mr-2 ssEventNameTop"> {{event.name}}</div>
+    <div> 
+      <button class="favorite-icon-wrapper">
+        <mat-icon *ngIf="isFavoriteEvent" class="filled" (click)="manageFavorites()">favorite</mat-icon>
+        <mat-icon *ngIf="!isFavoriteEvent" class="outline" (click)="manageFavorites()">favorite_border</mat-icon>
+      </button>
+      
+    
+      
+      <!-- <button (click)="manageFavorites()">
+        Heart
+      </button> -->
+    </div>
+      </div>
+      
+    <mat-tab-group class="" mat-stretch-tabs="false" mat-align-tabs="center" animationDuration="0ms" >
+      <mat-tab label="Events">
+        <div class="row mx-0 mt-3">
+          <div class="col-lg-5 col-12 ssEventLeftDetails">
+            <div *ngIf="event.dates?.start?.localDate">
+              <div class="ssEventLabels">Date</div>
+              <div>
+                <div>{{event.dates?.start?.localDate}} {{event?.dates?.start?.localTime}}</div>
+                <!-- <div *ngIf="event.dates?.start?.localTime">{{event?.dates?.start?.localTime}}</div> -->
+              </div>
+             
+            </div>
+            <div *ngIf="attrList?.length">
+              <div class="ssEventLabels">Artist/Team</div>
+              <div>{{attrList}}</div>
+            </div>
+            <div *ngIf="event._embedded?.venues?.[0]?.name">
+              <div class="ssEventLabels">Venue</div>
+              <div>{{event._embedded?.venues?.[0]?.name}}</div>
+            </div>
+            <div *ngIf="genreList">
+              <div class="ssEventLabels">Genre</div>
+              <div>{{genreList}}</div>
+            </div>
+            <div *ngIf="event?.priceRanges?.[0]">
+              <div class="ssEventLabels">Price Ranges</div>
+              <div>{{event?.priceRanges?.[0].min}} - {{event?.priceRanges?.[0].max}}</div>
+            </div>
+            <div *ngIf="event?.dates?.status?.code">
+              <div class="ssEventLabels">Ticket Status</div>
+              <div [style.background-color]="statusMapColor[event?.dates?.status?.code]" class="ssTicketStatusBtn"> {{statusMapText[event?.dates?.status?.code]}}</div>
+            </div>
+            <div *ngIf="event?.url" class="mb-3">
+              <div class="ssEventLabels">Buy Ticket At:</div>
+              <div><a [href]="event?.url" target="_blank"><u>TicketMaster</u></a></div>
+            </div>
+          </div>
+      
+          <div *ngIf="event?.seatmap?.staticUrl" class="col-lg-6 col-12">
+            <!-- <img [height]="400" [width]="400" [src]="event?.seatmap?.staticUrl" alt="Seatmap"> -->
+            <img class="img-fluid" [src]="event?.seatmap?.staticUrl" alt="Seatmap">
+          </div>
+        </div>
+       
+    
+        <div class="row mx-0 mt-2 mb-3">
+          <div class="col d-flex flex-row ssBtmIconParent justify-content-center">
+            <div>Share on: </div>
+            
+            <div>
+
+              <a [href]="generateTwitterShareUrl()" target="_blank">
+                <i class="fa fa-brands fa-twitter ssBtmIcon" style="color: #40aec1;"></i>
+              </a>
+
+            </div>
+
+            <div>
+              <a [href]="generateFacebookShareUrl()" target="_blank">
+                <i class="fa fa-brands fa-facebook-square ssBtmIcon"></i>
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.<path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg> -->
+              </a>
+            </div>
+            
+          </div>
+        </div>
+    
+      </mat-tab>
+
+
+      <mat-tab label="Artists/Teams">
+    
+    
+               
+        
+    
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
+    
+          <div *ngIf="!noMusicArtists && artistList?.length > 0" id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+              <ng-container *ngFor="let artist of artistList; let i=index">
+                <div class="carousel-item" [ngClass]="{'active': i === 0}">
+                  <div class="row mx-0 mt-3">
+                    <div class="col-lg-9 col-11 m-auto">
+                      <div class="row mx-0 mt-3">
+                        <div class="col-lg-3 col-8 ssArtistImageMain">
+                          <div class="d-flex flex-column">
+                            <div>
+                              <!-- <img class="d-block w-100 rounded-circle" [height]="160" [width]="160" [src]="artist.images?.[0]?.url" alt="{{artist?.name}}"> -->
+                              <img class="img-fluid mx-auto rounded-circle" [src]="artist.images?.[0]?.url" alt="">
+                            </div>
+                            <div>
+                              <div class="h4 ssEventLabels text-center">{{artist?.name}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="d-flex flex-column">
+                            <div class="h5 ssEventLabels text-center">Popularity</div>
+                            <div class="mx-auto">
+                              <mat-progress-spinner class="example-margin" color="warn" mode="determinate" [diameter]="45" [value]="artist.popularity">
+                                
+                                <!-- <ng-template matProgressSpinnerContent>
+                                  <span style="font-size: 29px; font-weight: bold; color: red;">
+                                    {{ artist.popularity }}
+                                  </span>
+                                </ng-template> -->
+                              </mat-progress-spinner>
+                              <div style="position:relative; top: -33px; left: 15px; font-weight: bolder;">{{ artist.popularity }}</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                          <div class="d-flex flex-column">
+                            <div class="h5 ssEventLabels text-center">Followers</div>
+                            <div class="text-center" style="font-weight: bolder;">
+                              {{artist.followers?.total | number: '1.0-0'}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                          <div class="d-flex flex-column">
+                            <div class="h5 ssEventLabels text-center">Spotify Link</div>
+                            <div class="ssBtmIconParent mx-auto" style="font-size: 2.7rem">
+                             
+                                <a [href]="artist.external_urls?.spotify" class="mx-auto" target="_blank">
+                                  <i class="fa fa-brands fa-spotify" style="color: #008000;"></i>
+                                </a>
+                              
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class='row mx-0 mt-3'>
+                        <div class="d-flex flex-column">
+                          <div class="ssEventLabels ssAlbumLabel">
+                            Album featuring {{artist.name}}
+                          </div>
+                          <div class="row mx-0 mt-3 mb-3">
+                            <ng-container *ngFor="let album of albumList?.[i]?.items">
+                              <div class="col-lg-4 col-8 mx-auto ssAlbumImage">
+                                <img class="img-fluid mx-auto" [src]="album?.images?.[0]?.url" alt="{{album?.name}}">
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-lg-4">
+                      <img class="d-block w-100" [src]="artist.images?.[0]?.url" alt="{{artist.name}}">
+                    </div>
+                    <div class="col-lg-8">
+                      <h3>{{artist.name}}</h3>
+                      <p>Popularity: {{artist.popularity}}</p>
+                      <h4>Albums:</h4>
+                      <div class="row">
+                        <ng-container *ngFor="let album of albumList?.[i]?.items">
+                          <div class="col-lg-4">
+                            <img class="d-block w-100" [src]="album?.images?.[0]?.url" alt="{{album?.name}}">
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <a *ngIf="artistList?.length>1" class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a *ngIf="artistList?.length>1" class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          
+    
+          <div *ngIf="noMusicArtists || artistList?.length == 0" class="ssNoFavParent">
+            <div class="col-lg-6 col-9 mx-auto my-5 ssNoFav">No music related artist details to show</div>
+          </div>
+      </mat-tab>
+      <mat-tab label="Venue">
+        <div class="row mx-0 mt-3 ssVenueParent">
+          <div class="col-lg-6 col-12 ssVenueLeft">
+            <div class="d-flex flex-column">
+              <div *ngIf="venueDetails?._embedded?.venues[0]?.name" class="ssEventLabels">Name</div>
+              <div>
+                {{venueDetails?._embedded?.venues[0]?.name}}
+              </div>
+            </div>
+            <div class="d-flex flex-column">
+              <div *ngIf="venueAddress" class="ssEventLabels">Address</div>
+              <div>{{venueAddress}}</div>
+            </div>
+            <div *ngIf="venueDetails?._embedded?.venues[0]?.boxOfficeInfo?.phoneNumberDetail" class="d-flex flex-column">
+              <div class="ssEventLabels">Phone Number</div>
+              <div>{{venueDetails?._embedded?.venues[0]?.boxOfficeInfo?.phoneNumberDetail}}</div>
+            </div>
+          </div>
+    
+          <div class="col-lg-6 col-12 ssVenueRight">
+            <div *ngIf="venueDetails?._embedded?.venues[0]?.boxOfficeInfo?.openHoursDetail" class="d-flex flex-column">
+              <div class="ssEventLabels">Open Hours</div>
+              <div [ngClass]="{'show-more': showMore1}"  class="ssShowDiv">
+                {{venueDetails?._embedded?.venues[0]?.boxOfficeInfo?.openHoursDetail}}
+              </div>
+              <u style="color: blue;">
+                <a *ngIf="venueDetails?._embedded?.venues[0]?.boxOfficeInfo?.openHoursDetail?.length > 120" style="cursor: pointer" (click)="showMore1 = !showMore1">
+                  <span class="ssLessMoreLink" *ngIf="showMore1">Show less<i class="fa fa-solid fa-angle-up" style="color: #ffffff;"></i></span>
+                  <span class="ssLessMoreLink" *ngIf="!showMore1">Show more<i class="fa fa-solid fa-angle-down" style="color: #ffffff;"></i></span>
+                  <!-- {{ showMore1 ? 'Show less ^' : 'Show more v' }} -->
+                </a>
+              </u>
+              
+            </div>
+
+            <div *ngIf="venueDetails?._embedded?.venues[0]?.generalInfo?.generalRule" class="d-flex flex-column">
+              <div class="ssEventLabels">General Rules</div>
+              <div [ngClass]="{'show-more': showMore2}" class="ssShowDiv">
+                {{venueDetails?._embedded?.venues[0]?.generalInfo?.generalRule}}
+              </div>
+              <u style="color: blue;">
+                <a *ngIf="venueDetails?._embedded?.venues[0]?.generalInfo?.generalRule?.length > 120" style="cursor: pointer" (click)="showMore2 = !showMore2">
+                  <span class="ssLessMoreLink" *ngIf="showMore2">Show less<i class="fa fa-solid fa-angle-up" style="color: #ffffff;"></i></span>
+                  <span class="ssLessMoreLink" *ngIf="!showMore2">Show more<i class="fa fa-solid fa-angle-down" style="color: #ffffff;"></i></span>
+                  
+                  <!-- {{ showMore2 ? 'Show less ^' : 'Show more v' }} -->
+                </a>
+              </u>
+              
+            </div>
+
+
+            <div *ngIf="venueDetails?._embedded?.venues[0]?.generalInfo?.childRule" class="d-flex flex-column">
+              <div class="ssEventLabels">Child Rules</div>
+              <div [ngClass]="{'show-more': showMore3}" class="ssShowDiv">
+                {{venueDetails?._embedded?.venues[0]?.generalInfo?.childRule}}
+              </div>
+              <u style="color: blue;">
+                <a *ngIf="venueDetails?._embedded?.venues[0]?.generalInfo?.childRule?.length > 120" style="cursor: pointer" (click)="showMore3 = !showMore3">
+                  <span class="ssLessMoreLink" *ngIf="showMore3">Show less<i class="fa fa-solid fa-angle-up" style="color: #ffffff;"></i></span>
+                  <span class="ssLessMoreLink" *ngIf="!showMore3">Show more<i class="fa fa-solid fa-angle-down" style="color: #ffffff;"></i></span>
+                  
+                  <!-- {{ showMore3 ? 'Show less ^' : 'Show more v' }} -->
+                </a>
+              </u>
+              
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 mb-4 mx-0 row justify-content-center">
+          <button type="button" class="btn btn-danger text-center mt-2 ssMapBtn" (click)="openGoogleMapModal()">Show venue on Google map</button>
+        </div>
+     
+      </mat-tab>
+    </mat-tab-group>
+    </div>
+  </div>
+ 
+</div>
+</div>
+ 
+

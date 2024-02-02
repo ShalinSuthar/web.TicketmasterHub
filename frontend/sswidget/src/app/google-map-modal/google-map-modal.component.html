@@ -1,0 +1,18 @@
+<div mat-dialog-title>
+    <div class="h3">Event Venue</div>
+  </div>
+  <hr style="border: 1px solid #d7d4d4 ">
+  <div mat-dialog-content class="ssGoogleMap">
+    <div class="container">
+      <google-map class="ssGoogleMapContainer" [options]="mapOptions" >
+        <map-marker [position]="markerPosition"></map-marker>
+      </google-map>
+    </div>
+    
+  </div>
+  <div mat-dialog-actions>
+    <button type="button" class="btn btn-dark ml-2" (click)="onClose()">Close</button>
+  </div>
+
+  
+  
