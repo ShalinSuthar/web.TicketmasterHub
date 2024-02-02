@@ -1,0 +1,18 @@
+runtime: nodejs18
+
+handlers:
+  # Serve static content
+  - url: /static
+    static_dir: dist/sswidget/assets
+
+  # Serve the index.html file
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
+
+  # Serve the app
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
